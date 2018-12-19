@@ -1,4 +1,4 @@
-class SinglyLinkedList {
+module.exports = class SinglyLinkedList {
 
   constructor(data) {
     this.head = null;
@@ -6,9 +6,26 @@ class SinglyLinkedList {
     this.addToHead(data);
   }
 
+  toString() {
+    if (this.length === 0) {
+      return '';
+    }
+
+    let pointer = this.head;
+    let result = pointer.value.toString();
+    
+    while (pointer = pointer.next) {
+      result += ', ' + pointer.value;
+    }
+
+    return `[ ${ result } ]`;
+  }
+
   addToHead(value) {
     const newNode = { value };
     newNode.next = this.head;
+
+    this.head = newNode;
     this.length++;
     
     return this;
@@ -24,6 +41,24 @@ class SinglyLinkedList {
     this.length--;
 
     return value;
+  }
+
+  find(cb) {
+    if (this.length === 0) {
+      return;
+    }
+
+    let pointer = this.head;
+
+    do {
+
+      let result = cb(pointer.value)
+
+      if (Boolean(result)) {
+        return pointer.value;
+      }
+
+    } while (pointer = pointer.next)
   }
 
 }
