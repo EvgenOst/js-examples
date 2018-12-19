@@ -1,18 +1,10 @@
 const readline = require('readline');
 const SLL = require('./singly-linked-list');
 
-let list = new SLL(1);
+let list = new SLL(1,2,3);
 
-list.addToHead(2).addToHead(3).addToHead(4);
+list.addToHead(-1,0,0.9);
 
-// let val = list.removeFromHead();
+list.addToTail(10, {v: 5}, 25);
 
-console.log('' + list);
-
-let val = list.find(value => value == 3);
-
-console.log('val = ', val);
-
-val = list.find(v => v == 0);
-
-console.log('val = ', val);
+console.log('' + list.toArray());
