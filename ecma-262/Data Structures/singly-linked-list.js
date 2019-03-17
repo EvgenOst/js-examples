@@ -10,6 +10,11 @@ module.exports = class SinglyLinkedList {
     this.length = 0;
 
     this.addToHead(...data);
+    this.log(data);
+  }
+
+  log(value) {
+    console.log(value)
   }
 
   /**
